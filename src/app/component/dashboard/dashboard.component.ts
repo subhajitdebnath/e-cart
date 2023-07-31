@@ -26,7 +26,7 @@ export class DashboardComponent {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.dataService.test);
+    // console.log('init Dashboard');
   }
 
   showCarParent(event: Car): void {
@@ -34,7 +34,11 @@ export class DashboardComponent {
   }
 
   changeTestData(): void {
-    this.dataService.test += 1;
+    this.dataService.changeCounter();
+  }
+
+  ngOnDestroy(): void {
+    // console.log('destroy Dashboard');
   }
   
 }

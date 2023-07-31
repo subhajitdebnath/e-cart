@@ -8,16 +8,20 @@ import { DataService } from 'src/app/core/services/data.service';
 })
 export class HeaderComponent {
 
+  count!: number;
+
   constructor(
     private dataService: DataService
   ) {}
 
   ngOnInit(): void {
-    console.log(this.dataService.test);
+    this.getTestData();
   }
 
   getTestData(): void {
-    console.log(this.dataService.test);
+    this.dataService.counter$.subscribe(res => {
+      console.log(res);
+    })
   }
 
 }
