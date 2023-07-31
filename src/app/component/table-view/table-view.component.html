@@ -1,0 +1,16 @@
+<h3>Cars</h3>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Action</th>
+    </tr>
+    <tr *ngFor="let car of carList; let i = index">
+        <td>{{car.id}}</td>
+        <td>{{car.name}}</td>
+        <td>{{car.color}}</td>
+        <td><button (click)="show(i)">Show</button></td>
+    </tr>
+</table>
