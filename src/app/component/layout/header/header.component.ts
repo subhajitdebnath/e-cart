@@ -8,7 +8,7 @@ import { DataService } from 'src/app/core/services/data.service';
 })
 export class HeaderComponent {
 
-  count!: number;
+  count!: any;
 
   constructor(
     private dataService: DataService
@@ -21,6 +21,12 @@ export class HeaderComponent {
   getTestData(): void {
     this.dataService.counter$.subscribe(res => {
       console.log(res);
+      this.count = res;
+    })
+
+    this.dataService.counter1$.subscribe(res => {
+      console.log(res);
+      this.count = res;
     })
   }
 
