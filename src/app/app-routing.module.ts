@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './component/dashboard/dashboard.component';
-import { TableViewComponent } from './component/table-view/table-view.component';
+import { AuthIndependentComponent } from './auth-independent/auth-independent.component';
+import { PreAuthComponent } from './pre-auth/pre-auth.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
+    component: AuthIndependentComponent,
+    loadChildren: () => import('./auth-independent/auth-independent.module').then(m => m.AuthIndependentModule)
   },
   {
-    path: 'table',
-    component: TableViewComponent
+    path: 'user',
+    component: PreAuthComponent,
+    loadChildren: () => import('./pre-auth/pre-auth.module').then(m => m.PreAuthModule)
   }
 ];
 

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TableViewComponent } from './table-view.component';
+import { PreAuthComponent } from './pre-auth.component';
 
-describe('TableViewComponent', () => {
-  let component: TableViewComponent;
-  let fixture: ComponentFixture<TableViewComponent>;
+describe('PreAuthComponent', () => {
+  let component: PreAuthComponent;
+  let fixture: ComponentFixture<PreAuthComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TableViewComponent]
+      declarations: [PreAuthComponent]
     });
-    fixture = TestBed.createComponent(TableViewComponent);
+    fixture = TestBed.createComponent(PreAuthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
