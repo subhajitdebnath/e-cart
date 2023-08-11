@@ -1,0 +1,2 @@
+1. Design the product listing page(root) similar to flipkart. refer: https://getbootstrap.com/docs/5.3/components/card/#example
+2. Create a module (post-auth) and add components like 'profile', 'cart' and link the pages in the header
