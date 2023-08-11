@@ -10,6 +10,7 @@ import { Car } from './core/models/cars.model';
 export class AppComponent {
   title = 'e-cart';
 
+  test="";
 
   cars: Car[] = [
     {
