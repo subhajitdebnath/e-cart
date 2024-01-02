@@ -1,6 +1,7 @@
-
-<div *ngFor="let product of products">
-    <img [src]="product.images[0]" [alt]="product.title" style="width: 100px;">
-    <p><a routerLink="product/{{product.id}}/{{product.title}}">{{product.title}}</a></p>
-    <p>{{product.description}}</p>
+<div class="product-container">
+    <div *ngFor="let product of products">
+        <img [src]="product.images[0]" [alt]="product.title" style="width: 100px;">
+        <p><a routerLink="product/{{product.id}}/{{product.title}}">{{product.title}}</a></p>
+        <p>{{product.description}}</p>
+    </div>
 </div>
