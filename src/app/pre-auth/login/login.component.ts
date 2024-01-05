@@ -38,6 +38,7 @@ export class LoginComponent {
     this.authService.login(loginForm.value).subscribe((res: any) => {
       console.log(res);
       this.lsService.setData('authData', res);
+      this.authService.authSub.next(res);
       this.router.navigate(['client', 'profile']);
       // alert('Welcome ' + res.firstName + ' ' + res.lastName);
     }, err => {

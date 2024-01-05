@@ -3,11 +3,14 @@ import { Injectable } from '@angular/core';
 import { API_URL } from '../constants/config';
 import { API } from '../constants/api';
 import { LocalstorageService } from './localstorage.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  authSub = new BehaviorSubject(null);
 
   constructor(
     private http: HttpClient,
@@ -20,6 +23,19 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  getUser(): any {
+    if(this.isAuthenticated()) {
+      return this.lsService.getData('authData');
+    } else {
+      return null;
+    }
+  }
+
+  logout(): void {
+    this.lsService.removeData('authData');
+    this.authSub.next(null);
   }
 
   login(body: any) {
