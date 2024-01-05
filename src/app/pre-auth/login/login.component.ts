@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { LocalstorageService } from 'src/app/core/services/localstorage.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,9 @@ export class LoginComponent {
 
   constructor(
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private lsService: LocalstorageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -33,7 +37,9 @@ export class LoginComponent {
 
     this.authService.login(loginForm.value).subscribe((res: any) => {
       console.log(res);
-      alert('Welcome ' + res.firstName + ' ' + res.lastName);
+      this.lsService.setData('authData', res);
+      this.router.navigate(['client', 'profile']);
+      // alert('Welcome ' + res.firstName + ' ' + res.lastName);
     }, err => {
       console.log(err);
       alert(err.error.message);
