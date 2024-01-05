@@ -1,10 +1,5 @@
-
-
-
 <div class="" *ngFor="let product of products" class="card" style="width: 18rem; display: inline-block;padding:0.5rem; margin: 0.5rem;">
-
-        <img [src]="product.images[0]" class="card-img-top" [alt]="product.title" style="width: 100px;">
-     
+        <img [src]="product.images[0]" class="card-img-top" [alt]="product.title" style="width: 100px; height: 100px;">
         <div class="">
             <h5 class="card-title"><a routerLink="product/{{product.id}}/{{product.title}}">{{product.title}}</a></h5>
             <p>{{product.description}}</p>

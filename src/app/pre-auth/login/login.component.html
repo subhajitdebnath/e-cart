@@ -1,20 +1,42 @@
 <div class="card" style="width: 30rem;">
     <div class="card-body">
-        <form>
+        <form (ngSubmit)="onLoginSuccess()" name="loginForm" [formGroup]="loginForm">
             <h3>Login</h3>
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <input type="email" #username formControlName="email" name="email" class="form-control" 
+               id="exampleInputEmail1" aria-describedby="emailHelp"(keyup)="trackEmail()" required>
               <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <span *ngIf="loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched">Email is required</span>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1">
+              <input type="password" formControlName="password" formControlerName="password"name="password" class="form-control" id="exampleInputPassword1" required>
             </div>
+            <span *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">Password is required</span>
             <div class="mb-3 form-check">
               <a class="form-check-label" routerLink="/user/register">Register</a>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary"[disabled]="!loginForm.valid">Submit</button>
         </form>
     </div>
 </div>
+
+<!-- <br /><br /><br /><br /><br /> -->
+
+<!-- <form >
+  <div class="mb-3" #loginForms="ngForm" (ngSubmit)="addCustomerForm(loginForms)">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name ="email" [(ngModel)]="email" >
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form> -->
