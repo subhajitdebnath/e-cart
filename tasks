@@ -1,2 +1,2 @@
-1. Design the product listing page(root) similar to flipkart. refer: https://getbootstrap.com/docs/5.3/components/card/#example
-2. Create a module (post-auth) and add components like 'profile', 'cart' and link the pages in the header
+1. inside product detail page call 'https://dummyjson.com/products/1' API and get the single product info and then bind that in the UI.
+Show as much as you can.

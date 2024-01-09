@@ -34,7 +34,7 @@ export class HeaderComponent {
     this.router.navigate(['user']);
   }
   search(){
-  
+    console.log('search called')
   }
 
 }
