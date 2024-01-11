@@ -1,2 +1,2 @@
-1. inside product detail page call 'https://dummyjson.com/products/1' API and get the single product info and then bind that in the UI.
-Show as much as you can.
+1. inside product detail page call 'https://dummyjson.com/products/1' API and get the single product info and then bind that in the UI. Show as much as you can.
+2. Add 'add to cart' button in the product detail page so that user can add item to the cart from this page.
