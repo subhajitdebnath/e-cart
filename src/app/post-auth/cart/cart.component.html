@@ -1,3 +1,15 @@
-<div *ngFor="let product of cart">
-    {{product.title}}
+<div class="" *ngFor="let product of cart; let i = index" class="card" style="width: auto; display: inline-block;padding:0.5rem; margin: 0.5rem;">
+    <img [src]="product.images[0]" class="card-img-top" [alt]="product.title" style="width: 100px; height: 100px;">
+    <div class="">
+        <a routerLink="/product/{{product.id}}/{{product.title}}">{{product.title}}</a>
+        <p>Quantity: {{product.quantity}}</p>
+        <button type="button" class="btn btn-warning" (click)="decreaseQuantity(i)">-</button>
+        <button type="button" class="btn btn-success" style="margin: 0.5rem;" (click)="increaseQuantity(i)">+</button>
+        <button type="button" class="btn btn-danger" (click)="deleteItem(i)">X</button>
+    </div>
+</div>
+<!-- <app-global-loader [loader]="loader"></app-global-loader> -->
+<app-product-skeleton-loader [loader]="loader"></app-product-skeleton-loader>
+<div *ngIf="!loader && cart.length === 0">
+    <app-not-found [msg]="'Cart is empty! Please add items to the cart first'"></app-not-found>
 </div>

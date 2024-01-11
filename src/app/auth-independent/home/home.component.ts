@@ -26,7 +26,7 @@ export class HomeComponent {
     this.loader = true;
     this.productService.getProducts().subscribe({
       next: (res: ProductResponse) => {
-        console.log(res);
+        // console.log(res);
         this.products = res.products;
       },
       error: (e) => console.error(e),

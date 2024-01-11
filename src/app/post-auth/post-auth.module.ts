@@ -5,6 +5,7 @@ import { PostAuthRoutingModule } from './post-auth-routing.module';
 import { PostAuthComponent } from './post-auth.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CartComponent } from './cart/cart.component';
   ],
   imports: [
     CommonModule,
-    PostAuthRoutingModule
+    PostAuthRoutingModule,
+    SharedModule
   ]
 })
 export class PostAuthModule { }

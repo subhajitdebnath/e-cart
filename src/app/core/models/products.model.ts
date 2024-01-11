@@ -16,5 +16,11 @@ export interface Product {
     rating: number,
     stock: number,
     thumbnail: string,
-    title: string
+    title: string,
+    quantity: number
+}
+
+export enum cartChangeType {
+    INCREMENT = 'INCREMENT',
+    DECREMENT = 'DECREMENT',
 }

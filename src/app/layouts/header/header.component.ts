@@ -14,6 +14,7 @@ export class HeaderComponent {
 
   userData: any;
   cartInfo: Product[] = [];
+  itemQuantity = 0;
 
   constructor(
     private authService: AuthService,
@@ -37,7 +38,10 @@ export class HeaderComponent {
   getCart(): void {
     this.cartService.cartSub.subscribe(res => {
       this.cartInfo = res;
-    })
+
+      this.itemQuantity = 0;
+      this.cartInfo.forEach((item: Product) => this.itemQuantity += item.quantity);
+    });
   }
 
   logout(): void {
