@@ -4,6 +4,7 @@ import { API_URL } from '../constants/config';
 import { API } from '../constants/api';
 import { Observable } from 'rxjs';
 import { ProductResponse } from '../models/products.model';
+import { identifierName } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +18,11 @@ export class ProductService {
   getProducts(): Observable<any> {
     return this.http.get(API_URL + API.products);
   }
+  getProductById(productId: number): Observable<any> {
+    return this.http.get(API_URL + API.products  +"/"+ productId);
+  }
+
 }
+
+
+// https://dummyjson.com/products/1'

@@ -11,7 +11,11 @@ const routes: Routes = [
   {
     path: 'product/:id/:title', // wildcard route
     component: ProductDetailComponent
-  }
+  },
+  // {
+  //   path: 'products/:id', // wildcard route
+  //   component: ProductDetailComponent
+  // }
 ];
 
 @NgModule({
