@@ -10,24 +10,13 @@ import { ProductService } from 'src/app/core/services/product.service';
 })
 export class ProductDetailComponent {
 
-  // id: any;
-  // title: any;
-  // description: any;
-  // products: Product[] = [];
   productId!: number ;
   productDetails: any;
-  // @Input() productDetails!: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-  ) {
-    // this.id = this.route.snapshot.paramMap.get('id');
-    // this.title = this.route.snapshot.paramMap.get('title');
-    // this.description = this.route.snapshot.paramMap.get('description');
-
-    // console.log(this.id, this.title,this.description)
-  }
+  ) { }
 
   ngOnInit(){
     this.route.params.subscribe(params => {
@@ -35,32 +24,15 @@ export class ProductDetailComponent {
       console.log(this.productId)
       this.getProductDetails();
     });
-
-  
-   
-
-
 }
-getProductDetails(): void {
+getProductDetails(): void { 
   this.productService.getProductById(this.productId).subscribe({
     next: (res) => {
-      console.log(res);
       this.productDetails = res;
       console.log(this.productDetails);
     },
     error: (e) => console.error(e)
   });
 }
-  // getProductDetails(): void {
-    //   this.productService.getProductById(this.productId).subscribe({
-    //     next: (product: Product) => {
-    //       this.product = product;
-    //     },
-    //     error: (e) => console.error(e)
-    //   });
-    // }
-
-
-
 } 
 
