@@ -1,0 +1,14 @@
+.nav-item{
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-item.login:hover {
+    color: #007bff; /* Change the color on hover */
+  }
+  
+  /* Hover effect for "Cart" item */
+  .nav-item.cart:hover {
+    color: #28a745; /* Change the color on hover */
+  }
