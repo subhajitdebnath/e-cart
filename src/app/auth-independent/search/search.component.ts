@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, Subject, Subscription, debounceTime, distinctUntilChanged, switchMap } from 'rxjs';
 import { Product } from 'src/app/core/models/products.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CartService } from 'src/app/core/services/cart.service';
@@ -16,6 +17,9 @@ export class SearchComponent {
 
   products: Product[] = [];
   loader = false;
+
+  searchObs!: Subscription;
+  private searchText = new Subject<string>();
 
   constructor(
     private route: ActivatedRoute,
@@ -35,9 +39,14 @@ export class SearchComponent {
   }
 
   ngOnInit(): void {
-    // if(this.query) {
-    //   this.searchProducts();
-    // }
+    this.searchObs = this.searchText.pipe(
+      debounceTime(1000),
+      distinctUntilChanged()
+    ).subscribe(res => {
+      if(this.query) {
+        this.searchProducts();
+      }
+    })
   }
 
   searchProducts(): void {
@@ -60,5 +69,11 @@ export class SearchComponent {
     } else {
       this.router.navigate(['user']);
     }
+  }
+
+  search(): void {
+    // console.log(this.query);
+    // this.searchProducts();
+    this.searchText.next(this.query);
   }
 }

@@ -8,7 +8,11 @@
     color: #007bff; /* Change the color on hover */
   }
   
-  /* Hover effect for "Cart" item */
-  .nav-item.cart:hover {
-    color: #28a745; /* Change the color on hover */
-  }
+/* Hover effect for "Cart" item */
+.nav-item.cart:hover {
+  color: #28a745; /* Change the color on hover */
+}
+
+.search-container {
+  display: flex;
+}
