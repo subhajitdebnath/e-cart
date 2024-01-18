@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product, ProductResponse } from 'src/app/core/models/products.model';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductService } from 'src/app/core/services/product.service';
 
@@ -18,6 +19,8 @@ export class ProductDetailComponent {
     private route: ActivatedRoute,
     private productService: ProductService,
     private cartService: CartService,
+    private authService: AuthService,
+    private router: Router,
   ) { }
 
   ngOnInit(){
@@ -26,18 +29,22 @@ export class ProductDetailComponent {
       console.log(this.productId)
       this.getProductDetails();
     });
-}
-getProductDetails(): void { 
-  this.productService.getProductById(this.productId).subscribe({
-    next: (res) => {
-      this.productDetails = res;
-      console.log(this.productDetails);
-    },
-    error: (e) => console.error(e)
-  });
-}
-addTocart(): void {
-  this.cartService.addToCart(this.productDetails);
-}
+  }
+  getProductDetails(): void { 
+    this.productService.getProductById(this.productId).subscribe({
+      next: (res) => {
+        this.productDetails = res;
+        console.log(this.productDetails);
+      },
+      error: (e) => console.error(e)
+    });
+  }
+  addTocart(): void {
+    if(this.authService.isAuthenticated()) {
+      this.cartService.addToCart(this.productDetails);
+    } else {
+      this.router.navigate(['user']);
+    }
+  }
 } 
 

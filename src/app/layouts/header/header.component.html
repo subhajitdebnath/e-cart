@@ -16,10 +16,8 @@
             <a class="nav-link active" aria-current="page" routerLink="client/cart">cart({{itemQuantity}})</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit" (click)="search()">Search</button>
-        </form>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="query">
+        <button class="btn btn-outline-success" type="submit" (click)="search()">Search</button>
         <div style="display: flex;" *ngIf="userData">
           <div>{{ userData.username }}</div>
           <button (click)="logout()">Logout</button>

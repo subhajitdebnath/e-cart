@@ -3,4 +3,5 @@ export const API = {
     register: "/auth/registeration",
 
     products: "/products",
+    productSearch: "/products/search",
 }

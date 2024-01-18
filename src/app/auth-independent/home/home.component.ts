@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product, ProductResponse } from 'src/app/core/models/products.model';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { CartService } from 'src/app/core/services/cart.service';
 import { ProductService } from 'src/app/core/services/product.service';
 
@@ -16,6 +18,8 @@ export class HomeComponent {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
+    private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -38,7 +42,10 @@ export class HomeComponent {
   }
 
   addTocart(index: number): void {
-    // console.log(this.products[index])
-    this.cartService.addToCart(this.products[index]);
+    if(this.authService.isAuthenticated()) {
+      this.cartService.addToCart(this.products[index]);
+    } else {
+      this.router.navigate(['user']);
+    }
   }
 }

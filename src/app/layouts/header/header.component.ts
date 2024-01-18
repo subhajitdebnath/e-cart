@@ -16,6 +16,8 @@ export class HeaderComponent {
   cartInfo: Product[] = [];
   itemQuantity = 0;
 
+  query = '';
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -49,7 +51,9 @@ export class HeaderComponent {
     this.router.navigate(['user']);
   }
   search(){
-    console.log('search called')
+    console.log('search called', this.query);
+    if(this.query)
+      this.router.navigateByUrl('search?q=' + this.query);
   }
 
 }

@@ -22,6 +22,10 @@ export class ProductService {
     return this.http.get(API_URL + API.products  +"/"+ productId);
   }
 
+  searchProducts(query: string): Observable<any> {
+    return this.http.get(API_URL + API.productSearch  +"?q="+ query);
+  }
+
 }
 
 
