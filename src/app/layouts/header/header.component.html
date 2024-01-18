@@ -6,13 +6,13 @@
       </button>
       <div  class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item" *ngIf="!userData">
+          <li class="nav-item login" *ngIf="!userData">
             <a class="nav-link active" aria-current="page" routerLink="user">Login</a>
           </li>
           <li class="nav-item" *ngIf="userData">
             <a class="nav-link active" aria-current="page" routerLink="client/profile">profile</a>
           </li>
-          <li class="nav-item" *ngIf="userData">
+          <li class="nav-item cart" *ngIf="userData">
             <a class="nav-link active" aria-current="page" routerLink="client/cart">cart({{itemQuantity}})</a>
           </li>
         </ul>
