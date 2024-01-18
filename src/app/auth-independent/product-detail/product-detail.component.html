@@ -1,4 +1,4 @@
-<div class="" let i = "index" class="card" style="width: 18rem; display: inline-block;padding:0.5rem; margin: 0.5rem;">
+<div class="card" style="width: 18rem; display: inline-block;padding:0.5rem; margin: 0.5rem;" *ngIf="productDetails">
     <img [src]="productDetails.images[0]" class="card-img-top" [alt]="productDetails.title" style="width: 100px; height: 100px;">
     <!-- <img [src]="productDetails.images[1]" class="card-img-top" [alt]="productDetails.title" style="width: 100px; height: 100px;">
     <img [src]="productDetails.images[2]" class="card-img-top" [alt]="productDetails.title" style="width: 100px; height: 100px;">
@@ -13,4 +13,6 @@
         <p>stock:{{productDetails.stock}}</p>
         <button type="button" class="btn btn-success">Add to Cart</button>
     </div>
-</div>  
+</div>
+
+<app-global-loader [loader]="!productDetails"></app-global-loader>
