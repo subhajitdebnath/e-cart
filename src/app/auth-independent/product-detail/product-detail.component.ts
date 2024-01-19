@@ -14,6 +14,7 @@ export class ProductDetailComponent {
 
   productId!: number ;
   productDetails: any;
+  images: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,6 +36,7 @@ export class ProductDetailComponent {
       next: (res) => {
         this.productDetails = res;
         console.log(this.productDetails);
+        this.images=this.productDetails.images
       },
       error: (e) => console.error(e)
     });
