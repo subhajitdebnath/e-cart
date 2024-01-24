@@ -1,0 +1,54 @@
+<div *ngIf="!viewAdd">
+    <div class="address-container">
+        <h3>Select an Adress</h3>
+        <button type="button" class="btn btn-success" style="margin: 0.5rem;" (click)="add()">Add New Address</button>
+    </div>
+    <div>
+        <div *ngFor="let address of addressList; let i = index">
+            {{address.name}}
+            {{address.pincode}}
+            {{address.type}}
+            <button type="button" class="btn btn-success" style="margin: 0.5rem;" (click)="edit()">edit</button>
+            <button type="button" class="btn btn-danger" style="margin: 0.5rem;" (click)="delete(address.id)">delete</button>
+        </div>
+    </div>
+    <div *ngIf="!loader && addressList.length === 0">
+        <app-not-found [msg]="'There is no addess saved. Please add a new address'"></app-not-found>
+    </div>
+</div>
+
+<div *ngIf="viewAdd">
+    <div class="address-container">
+        <h3>Add an Adress</h3>
+        <button type="button" class="btn btn-success" style="margin: 0.5rem;" (click)="close()">Back</button>
+    </div>
+    <div class="card" style="width: 30rem;">
+        <div class="card-body">
+            <form [formGroup]="addressForm" (ngSubmit)="onSubmit(addressForm)">
+                <h3>Login</h3>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" formControlName="name">
+                  <div class="form-text" *ngIf="addressForm.get('name')?.invalid && addressForm.get('name')?.dirty">Please enter a proper name</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="pincode" class="form-label">Pincode</label>
+                    <input type="text" class="form-control" id="pincode" formControlName="pincode">
+                    <div class="form-text" *ngIf="addressForm.get('pincode')?.invalid && addressForm.get('pincode')?.dirty">Please enter a proper pincode</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="type" class="form-label">Address Type</label>
+                    <select name="type" class="form-control" id="type" formControlName="type">
+                        <option value="">Select</option>
+                        <option value="home">Home</option>
+                        <option value="office">Office(Office Timing)</option>
+                    </select>
+                    <div class="form-text" *ngIf="addressForm.get('type')?.invalid && addressForm.get('type')?.dirty">Please select a proper type</div>
+                </div>
+                <button type="submit" class="btn btn-primary"[disabled]="!addressForm.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

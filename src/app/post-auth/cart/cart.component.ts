@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product, cartChangeType } from 'src/app/core/models/products.model';
 import { CartService } from 'src/app/core/services/cart.service';
 
@@ -11,7 +12,8 @@ export class CartComponent {
   cart: Product[] = [];
   loader = false;
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -37,6 +39,10 @@ export class CartComponent {
 
   deleteItem(index: number): void {
     this.cartService.deleteItemFromCart(this.cart[index].id);
+  }
+
+  goToAddressSelection(): void {
+    this.router.navigateByUrl('client/address-select');
   }
 
 }

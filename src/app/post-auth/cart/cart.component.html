@@ -8,6 +8,7 @@
         <button type="button" class="btn btn-danger" (click)="deleteItem(i)">X</button>
     </div>
 </div>
+<button type="button" class="btn btn-success" style="margin: 0.5rem;" (click)="goToAddressSelection()">Proceed To Select Address</button>
 <!-- <app-global-loader [loader]="loader"></app-global-loader> -->
 <app-product-skeleton-loader [loader]="loader"></app-product-skeleton-loader>
 <div *ngIf="!loader && cart.length === 0">

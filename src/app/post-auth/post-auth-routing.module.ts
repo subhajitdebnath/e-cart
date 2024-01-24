@@ -2,12 +2,9 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AddressSelectionComponent } from './address-selection/address-selection.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: CartComponent
-  //  },
   {
    path: 'cart',
    component: CartComponent
@@ -15,8 +12,11 @@ const routes: Routes = [
   {
     path: 'profile',
     component:ProfileComponent
+  },
+  {
+    path: 'address-select',
+    component: AddressSelectionComponent
   }
-
 ];
 
 @NgModule({
