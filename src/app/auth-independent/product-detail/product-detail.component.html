@@ -39,3 +39,43 @@
 </div>
 
 <app-global-loader [loader]="!productDetails"></app-global-loader>
+
+<!-- 
+<div class='container py-5 mt-5'>
+  <div class="row align-items-center">
+      <div class="col-6">
+        <img [src]="productDetails.images[0]" class="img-fluid "  [alt]="productDetails.title">
+      </div>
+      <div class="col-6">
+          <div class="row">
+              <div *ngFor="let image of images  let i = index" class="col-2 d-flex flex-column justify-content-between">
+                  <img [src]="image"class="other-images " (click)="changeImage(i)"[alt]="productDetails.title">
+              </div>
+              <div class="col-10">
+                  <div class="card text-center">
+                      <div class="card-header">
+                          <ul class="nav nav-pills card-header-pills">
+                              <li class="nav-item">
+                                  <a class="nav-link active" href="#">Features</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="#">Rating</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                              </li>
+                          </ul>
+                      </div>
+                      <div class="card-body">
+                          <h5 class="card-title">{{productDetails.title}}</h5>
+                          <p class="card-text">Product_Price:{{productDetails.price}}</p>
+                          <p class="card-text">{{productDetails.description}}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<app-global-loader [loader]="!productDetails"></app-global-loader> -->
