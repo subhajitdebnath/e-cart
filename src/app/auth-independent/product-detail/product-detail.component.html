@@ -2,7 +2,7 @@
     <!-- <img [src]="productDetails.images[0]" class="card-img-top" [alt]="productDetails.title" style="width: 100px; height: 100px;"> -->
     <div id="carouselExampleFade" class="carousel slide carousel-fade">
         <div   class="carousel-inner">
-          <div *ngFor="let image of images  let i = index" class="carousel-item active">
+          <div *ngFor="let image of images; let i = index" class="carousel-item" [ngClass]="{'active': i == 0}">
             <img [src]="image" class="card-img-top" [alt]="productDetails.title">
           </div>
           <!-- <div class="carousel-item">
