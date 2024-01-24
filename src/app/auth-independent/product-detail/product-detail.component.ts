@@ -31,6 +31,13 @@ export class ProductDetailComponent {
       this.getProductDetails();
     });
   }
+  // changeImage(i:number) {
+  // }
+  changeImage(i: number): void {
+    if (this.productDetails && this.images && i >= 0 && i < this.images.length) {
+      this.productDetails.images[0] = this.images[i];
+    }
+  }
   getProductDetails(): void { 
     this.productService.getProductById(this.productId).subscribe({
       next: (res) => {
