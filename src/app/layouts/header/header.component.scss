@@ -1,18 +1,24 @@
-.nav-item{
-    margin: 0 10px;
-    cursor: pointer;
-    transition: color 0.3s;
+.nav-link.ecart:hover {
+  color: #7f4cd2; /* Change the color on hover */
 }
-
-.nav-item.login:hover {
+.nav-link.login:hover {
     color: #007bff; /* Change the color on hover */
   }
   
 /* Hover effect for "Cart" item */
-.nav-item.cart:hover {
+.nav-link.cart:hover {
   color: #28a745; /* Change the color on hover */
+}
+.nav-link.profile:hover {
+  color: #0ea457; /* Change the color on hover */
 }
 
 .search-container {
   display: flex;
+}
+
+.nav-link{
+  margin: 0 10px;
+  cursor: pointer;
+  transition: color 0.3s;
 }
