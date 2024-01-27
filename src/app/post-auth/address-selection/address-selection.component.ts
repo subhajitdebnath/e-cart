@@ -14,6 +14,7 @@ export class AddressSelectionComponent {
   addressList: Address[] = [];
   viewAdd = false;
   addressForm!: FormGroup;
+  editingIndex: number | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -47,34 +48,43 @@ export class AddressSelectionComponent {
 
   close(): void {
     this.viewAdd = false;
+    this.editingIndex = null;
     this.addressForm.reset();
-  }
-
+}
   onSubmit(form: FormGroup): void {
-    console.log(form);
-
-    if(form.invalid) {
-      return;
+    if (form.invalid) {
+        return;
     }
 
     const payload = {
-      id: uuidv4(),
-      name: form.value.name,
-      pincode: form.value.pincode,
-      locality: 'abc park',
-      address: 'r c avenue',
-      city: 'bangaluru',
-      state: 'KA',
-      type: form.value.type,
+        id: this.editingIndex !== null ? this.addressList[this.editingIndex].id : uuidv4(),
+        name: form.value.name,
+        pincode: form.value.pincode,
+        locality: 'abc park',
+        address: 'r c avenue',
+        city: 'bangaluru',
+        state: 'KA',
+        type: form.value.type,
     };
 
-    this.addressService.add(payload);
-    this.close();
-  }
+    if (this.editingIndex !== null) {
+        // Update existing address
+        this.addressList[this.editingIndex] = payload;
+    } else {
+        // Add new address
+        this.addressService.add(payload);
+    }
 
-  edit(): void {
-    
-  }
+    // this.changeAddress();
+    this.close();
+}
+
+  edit(index: number): void {
+    this.editingIndex = index;
+    const editedAddress = this.addressList[index];
+    this.addressForm.patchValue(editedAddress);
+    this.viewAdd = true;
+}
 
   delete(addressId: string): void {
     this.addressService.delete(addressId);
