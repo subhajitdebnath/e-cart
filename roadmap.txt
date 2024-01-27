@@ -1,0 +1,83 @@
+Class 1.
+	- Javascript Init
+	- CopyCode from one input to another
+	- Addition with addEventListener
+	- Array vs Object
+	- Angular App Setup and Intro of the folder structure
+	- Play
+
+Class 2.
+	- ngIf, ngFor
+	- events and data passing with click events and array index
+	- Typescript Intro
+		- boolean
+		- string
+		- number
+		- any
+		- void
+		- array
+		- object interface: 
+		export interface metuseradata {
+		 id: string;
+		 name: string;
+		 email: string
+		}
+	- Adding bootstrap
+
+Class 3.
+    - Creating components
+    - Building a page with
+    	- header 
+    	- content
+    	- footer
+    - Cross component communication
+
+Class 4.
+    - Services
+    - Dependency Injection
+    - Hooks
+    - Observables Intro
+
+Class5: 
+	- Calling APIs with HttpClient Module
+	- Routing
+	- Basic Routing
+Class 6:
+	- Lazy loading with modules
+	- Nested Routes
+	- Route Guard -- TBD
+Class 7:
+	- Reactive Forms, Validation and login api call
+Class 8: 
+	- Authentication and Authorization
+Class 9:
+	- Feature module as Layouts
+	- Auth State using the header from layout module
+	- Product listing page creation
+Class 10:
+	- Product Details Page
+	- Search products
+Class 11: 
+	- Cart creation using localstorage
+Class 12: 
+	- cart items quantity handling and header count manipulation
+Class 13: 
+	- Cart finish
+Class 14: 
+	- Address Homework description
+	- Primeng Sakai exploration and git setup homework
+Class 15:
+	- Address Add, delete and get logic
+	- Pipes
+Class 16:
+	- Address update and complete
+	- Mcroservice architeture
+	- Microfrontend
+Class 17:
+	- Sakai theme local setup exploration and blog app start
+	- Directives
+Class 18:
+	- primeng tables, trees, modals, forms and other UI components
+Class 19:
+	- Blog app doubt solving
+	- Js under the hood
