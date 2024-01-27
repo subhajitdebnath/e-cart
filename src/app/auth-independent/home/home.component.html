@@ -5,7 +5,9 @@
         <!-- <a [routerLink]="['/product', product.id, product.title]">{{product.title}}</a> -->
         <a routerLink="/product/{{product.id}}/{{product.title}}">{{product.title}}</a>
         <!-- <a routerLink="/product/{{product.id}}/{{product.title}}">{{product.id}}</a> --> 
-        <p>{{product.description}}</p>
+        <p>{{product.description | characterlimit : 50}}</p>
+        <p>{{product.price | oddevenchecker}}</p>
+        <p [innerHTML]="product.header"></p>
         <button type="button" class="btn btn-success" (click)="addTocart(i)">Add to Cart</button>
     </div>
 </div>

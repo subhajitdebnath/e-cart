@@ -4,7 +4,7 @@
         <button type="button" class="btn btn-success" style="margin: 0.5rem;" (click)="add()">Add New Address</button>
     </div>
     <div>
-        <div *ngFor="let address of addressList; let i = index">
+        <div *ngFor="let address of addressObs | async; let i = index">
             {{address.name}}
             {{address.pincode}}
             {{address.type}}
@@ -12,7 +12,7 @@
             <button type="button" class="btn btn-danger" style="margin: 0.5rem;" (click)="delete(address.id)">delete</button>
         </div>
     </div>
-    <div *ngIf="!loader && addressList.length === 0">
+    <div *ngIf="!loader && (addressObs | async).length === 0">
         <app-not-found [msg]="'There is no addess saved. Please add a new address'"></app-not-found>
     </div>
 </div>

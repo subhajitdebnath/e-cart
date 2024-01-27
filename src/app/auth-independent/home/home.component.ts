@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Product, ProductResponse } from 'src/app/core/models/products.model';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -20,6 +21,7 @@ export class HomeComponent {
     private cartService: CartService,
     private authService: AuthService,
     private router: Router,
+    private domSanitizer: DomSanitizer,
   ) {}
 
   ngOnInit() {
@@ -32,6 +34,9 @@ export class HomeComponent {
       next: (res: ProductResponse) => {
         // console.log(res);
         this.products = res.products;
+        this.products.forEach(prod => {
+          return prod['header'] = this.domSanitizer.bypassSecurityTrustHtml("<h1>" + prod.title + "</h1><script>alert('hi')</script>");
+        });
       },
       error: (e) => console.error(e),
       complete: () => {

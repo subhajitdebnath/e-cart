@@ -17,7 +17,8 @@ export interface Product {
     stock: number,
     thumbnail: string,
     title: string,
-    quantity: number
+    quantity: number,
+    header?: any;
 }
 
 export enum cartChangeType {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Address } from 'src/app/core/models/address.model';
 import { AddressService } from 'src/app/core/services/address.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,6 +16,8 @@ export class AddressSelectionComponent {
   viewAdd = false;
   addressForm!: FormGroup;
   editingIndex: number | null = null;
+
+  addressObs!: Observable<any>;
 
   constructor(
     private fb: FormBuilder,
@@ -36,10 +39,12 @@ export class AddressSelectionComponent {
   }
 
   getAddressChange(): void {
-    this.addressService.addressChange.subscribe((addressList: Address[]) => {
-      // console.log(addressList);
-      this.addressList = addressList;
-    })
+    // this.addressService.addressChange.subscribe((addressList: Address[]) => {
+    //   this.addressList = addressList;
+    // });
+
+    this.addressObs = this.addressService.addressChange;
+
   }
 
   add(): void {
@@ -50,7 +55,7 @@ export class AddressSelectionComponent {
     this.viewAdd = false;
     this.editingIndex = null;
     this.addressForm.reset();
-}
+  }
   onSubmit(form: FormGroup): void {
     if (form.invalid) {
         return;
@@ -84,7 +89,7 @@ export class AddressSelectionComponent {
     const editedAddress = this.addressList[index];
     this.addressForm.patchValue(editedAddress);
     this.viewAdd = true;
-}
+  }
 
   delete(addressId: string): void {
     this.addressService.delete(addressId);
